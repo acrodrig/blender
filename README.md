@@ -29,12 +29,10 @@ TBW
 
 ## Known Limitations
 
-- At this point `include` cannot guard against infinite recursion
+SEO for non JS search engines (i.e. Bing and Yahoo).
 
 
-## Testing Bind
-
-There are three visual tests in the `demo.html`.
+## Testing Blender
 
 
 ## Contributing
