@@ -22,42 +22,9 @@ code highlighting, latex math and full control.
 TBW
 
 
-## Hello World Example
+## Demo
 
-Mandatory [Hello World](http://jsfiddle.net/acrodrig/e4o124g9/) example (link takes you to JSFiddle):
-
-file `header.html`:
-
-```html
-<h1>ACME Inc</h1>
-```
-
-file `footer.html`:
-
-```html
-<footer>Copyright 2016</footer>
-```
-
-file `index.html`:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <script src="../lib/include.js"></script>
-  </head>
-  <body>
-    <include src="header.html"></include>
-    <article>
-      <p>We are ACME Inc. We manufacture <b>everything</b>.</p>
-    </article>
-    <include src="footer.html"></include>
-  </body>
-</html>
-```
-
-The fiddle is modified to load the files directly from GitHub, since there is no way to store files as fiddles.
+TBW
 
 
 ## Known Limitations
