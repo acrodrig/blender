@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- HEAD ================================================================ -->
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Blog Template for Bootstrap</title>
+
+    <link href="//oss.maxcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="blog.css" rel="stylesheet">
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.1/lodash.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Examples: -->
+    <!-- script type="text/javascript" src="../lib/blender.js#/ocramius/ocramius.github.com/source/"></script -->
+    <script type="text/javascript" src="../lib/blender.js#/joshualande/joshualande.github.io"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+
+    <!-- NAVIGATION ========================================================== -->
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="#:">Home</a>
+          <a class="blog-nav-item" href="#:archive.md">Archive</a>
+          <a class="blog-nav-item" href="#:about.md">About</a>
+          <a class="blog-nav-item" href="#:README.md">README</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- BLOG HEADER ========================================================= -->
+
+      <div class="blog-header">
+        <h1 class="blog-title">Demo of Blender Blog</h1>
+        <p class="lead blog-description">
+          The official example template of creating a blog with Blender
+          (mimicking <a href="https://getbootstrap.com/examples/blog/">Bootstrap</a>'s).
+        </p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <!-- POSTS LIST ========================================================== -->
+
+          <div class="blog-list">
+            <ul>
+              {% for (var i = 0; i < items.length; i++) { %}
+              <li>
+                <a href="#:_posts/{{ items[i].name }}">{{ items[i].title }}</a>
+                <span class="sub">(Published on {{ items[i].date }})</span></li>
+              {% } %}
+            </ul>
+
+            <script>
+              $.ajax({ method: "GET", url: "https://api.github.com/repos"+blender.repo+"/contents"+blender.path+"/_posts" }).done(function(data) {
+                  var items = _.map(data, function(item) {
+                      item.title = _.capitalize(item.name.split('.').shift().substring(11).replace(/-/g, ' '));
+                      item.date = item.name.split('.').shift().substring(0, 10);
+                      return item;
+                  });
+                  items = _.orderBy(items, "date", "desc");
+                  _.render(document.querySelector(".blog-main ul"), { items: items });
+              });
+              $(window).on("hashload", function() { $("div.blog-list").css({ display: location.hash.length >= 3 ? "none" : "block" }); });
+            </script>
+          </div>
+
+
+          <!-- BLOG POST =========================================================== -->
+
+          <div class="blog-post">
+            <h2 class="blog-post-title">Sample blog post</h2>
+            <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
+
+            <script>
+              $(window).on("hashload", function(ev) {
+                  if (!document.info) return;
+                  $("h2.blog-post-title").html(document.info.title || "");
+                  $("p.blog-post-meta").text("Published on "+document.info.date+"");
+              });
+            </script>
+
+            <main>
+            </main>
+          </div>
+
+          <script>
+            $(window).on("hashload", function() { $("div.blog-post").css({ display: location.hash.length < 3 ? "none" : "block" }); });
+          </script>
+
+        </div>
+
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+
+          <!-- ABOUT =============================================================== -->
+
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About</h4>
+            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+          </div>
+
+
+          <!-- ARCHIVES ============================================================ -->
+
+          <div class="sidebar-module">
+            <h4>Archives</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">March 2014</a></li>
+              <li><a href="#">February 2014</a></li>
+              <li><a href="#">January 2014</a></li>
+              <li><a href="#">December 2013</a></li>
+              <li><a href="#">November 2013</a></li>
+              <li><a href="#">October 2013</a></li>
+              <li><a href="#">September 2013</a></li>
+              <li><a href="#">August 2013</a></li>
+              <li><a href="#">July 2013</a></li>
+              <li><a href="#">June 2013</a></li>
+              <li><a href="#">May 2013</a></li>
+              <li><a href="#">April 2013</a></li>
+            </ol>
+          </div>
+
+
+          <!-- OTHER =============================================================== -->
+
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- FOOTER ============================================================== -->
+
+    <footer class="blog-footer">
+      <p>
+        Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a> and adapted to work for Blender.<br/>
+        <a href="javascript: void(0)" onclick="window.scrollTo(0,0)">Back to top</a>
+      </p>
+      </p>
+    </footer>
+
+    <script src="//oss.maxcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js" async></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js" async></script>
+  </body>
+</html>
