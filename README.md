@@ -1,43 +1,25 @@
 Blender
 =======
 
-A dynamic almost-static Blog Aware page non-generator
+A dynamic almost-static Blog Aware page non-generator.
 
-```html
-<include src="/path/to/import/file.html"/>
-```
-
-I think the main reason why static generators (they are quite popular) need to exist in this day and age is the
-lack of an HTML import facility. You can include pretty much everything, except for HTML. Pretty lame.
+Drop a suitable blender `index.html` page into a Jekyll structure and get an instant blog with Markdown rendering,
+code highlighting, latex math and full control.
 
 
 ## Table of Contents
 
-- [Goals](#goals)
-- [Why Include](#why-include)
-- [Hello World Example](#hello-world-example)
+- [Why Blender](#why-blender)
+- [Demo](#demo)
 - [Known Limitations](#known-limitations)
 - [Testing Bind](#testing-bind)
 - [Contributing](contributing)
 - [License](license)
 
 
-## Goals
+## Why Blender
 
-The goals of this library are a completely seamless experience including content via the `<include>` tag. The experience
-needs to be seamless in terms of:
-
-- Simplicity: works like a native tag
-- Backward Compatibility: fails nicely in older browsers
-- Speed: no screen flickering, fast load times
-
-
-## Why Include
-
-- HTML import does not look like happening
-- The `import`` is not declarative, it still needs javascript to insert in the page
-- No more static generators for something as simple as an `include`
-- Avoid all the performance penalties and flicker associated with dynamic includes (via smart caching)
+TBW
 
 
 ## Hello World Example

@@ -1,0 +1,33 @@
+{
+    "name": "blender-js",
+    "description": "A dynamic almost-static Blog Aware page non-generator",
+    "version": "0.1.0",
+    "private": false,
+    "author": {
+        "name": "Andres C. Rodriguez",
+        "email": "andres@randomcurve.com"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/acrodrig/blender"
+    },
+    "keywords": [
+        "blog",
+        "generator",
+        "html",
+        "web"
+    ],
+    "dependencies": {
+    },
+    "devDependencies": {
+    },
+    "scripts": {
+        "build": "uglifyjs lib/blender.js -o dist/blender-$npm_package_version.min.js -c -m && cp lib/blender.js dist/blender-$npm_package_version.js",
+        "postversion": "git push && git push --tags",
+        "version": "npm run build && git add ."
+    },
+    "bugs": {
+        "url": "https://github.com/acrodrig/blender/issues"
+    }
+}
