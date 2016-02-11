@@ -1,7 +1,7 @@
 Blender
 =======
 
-A dynamic almost-static Blog Aware page non-generator.
+A dynamic almost-static Blog Aware page non-generator (based on GitHub Pages).
 
 Drop a suitable blender `index.html` page into a Jekyll structure and get an instant blog with Markdown rendering,
 code highlighting, latex math and full control.
@@ -25,6 +25,29 @@ TBW
 ## Demo
 
 TBW
+
+
+## Configuration
+
+There are various variables that configure how blender will work. They are:
+
+Variable | Default | Description
+--- | --- | ---
+`branch` | `master` | Branch to use from reposotory `repo`
+`index` | `` | If there is no URL, load this page similar to the way servers serve `index.html` if there is no document
+`path` | `` | Additional path to add to repository `repo`
+`relative` | `false` | Use relative URLs (instead of going to `raw.githubusercontent.com` (very useful for development)
+`repo` | `/acrodrig/acrodrig.github.io` | Repository where the data is stored
+
+They can be set either by adding an additional attribute to the `script` tag or by setting them in the `blender` object.
+The snippet below shows a configuration of `branch` via the first method and `repo` via the second method.
+
+```html
+<script src="//acrodrig.github.io/include/dist/blender-0.1.0.min.js" branch="test"></script>
+<script>
+    blender.repo = "/acrodrig/acrodrig.github.io";
+</script>
+```
 
 
 ## Known Limitations
