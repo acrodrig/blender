@@ -1,4 +1,4 @@
-0.3.0 / 2016-02-22
+0.1.2 / 2016-02-22
 ==================
 
 - Changed way to create events so that is compatible with IE9+ (via `createEvent`)
@@ -7,7 +7,7 @@
 - Added small TOC plugin example via `toc.html` in the `demo` directory
 
 
-0.2.0 / 2016-02-10
+0.1.1 / 2016-02-10
 ==================
 
 - Defined configuration variables

@@ -1,4 +1,4 @@
-Blender ([§](//acrodrig.github.com/include))
+Blender ([§](//acrodrig.github.com/blender))
 ============================================
 
 A dynamic almost-static Blog Aware page non-generator (based on GitHub Pages).
