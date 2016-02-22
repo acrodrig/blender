@@ -12,26 +12,30 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Blog Template for Bootstrap</title>
+    <title>Blender Demo Blog</title>
 
     <link href="//oss.maxcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="blog.css" rel="stylesheet">
 
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.1/lodash.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-    <!-- Examples: -->
-    <!-- script type="text/javascript" src="../lib/blender.js#/ocramius/ocramius.github.com/source/"></script -->
-    <script type="text/javascript" src="../lib/blender.js#/joshualande/joshualande.github.io"></script>
+    <script type="text/javascript" src="../lib/blender.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+      body[layout=default] [layout]:not([layout=default]) { display: none; }
+      body[layout=main] [layout]:not([layout=main]) { display: none; }
+      body[layout=page] [layout]:not([layout=page]) { display: none; }
+      body[layout=post] [layout]:not([layout=post]) { display: none; }
+    </style>
   </head>
 
-  <body>
+  <body layout="default">
 
 
     <!-- NAVIGATION ========================================================== -->
@@ -52,7 +56,7 @@
       <!-- BLOG HEADER ========================================================= -->
 
       <div class="blog-header">
-        <h1 class="blog-title">Demo of Blender Blog</h1>
+        <h1 class="blog-title">Blender Demo Blog</h1>
         <p class="lead blog-description">
           The official example template of creating a blog with Blender
           (mimicking <a href="https://getbootstrap.com/examples/blog/">Bootstrap</a>'s).
@@ -63,10 +67,25 @@
 
         <div class="col-sm-8 blog-main">
 
+          <h4 id="layout">Current Layout: <code>default</code></h4>
+          <script>
+            $(window).on("hashload", function(ev) {
+                $("#layout code").text(meta.layout || "default");
+            });
+          </script>
+
+          <div class="alert alert-warning" style="font-size: 10pt;">
+            This is an example of how we can quickly build a blog with a single page of HTML re-using the structure
+            of Jekyll blogs. Pointing <code>blender.repo</code> to <code>"/acrodrig/acrodrig.github.io"</code>
+            the current HTML page loads those pages and blogs posts dynamically. Additionally, it displays the
+            plugin <code>toc.html</code> on the right.
+          </div>
 
           <!-- POSTS LIST ========================================================== -->
 
-          <div class="blog-list">
+          <h2 layout="default">Blog Posts</h2>
+
+          <div class="blog-list" layout="default">
             <ul>
               {% for (var i = 0; i < items.length; i++) { %}
               <li>
@@ -85,32 +104,26 @@
                   items = _.orderBy(items, "date", "desc");
                   _.render(document.querySelector(".blog-main ul"), { items: items });
               });
-              $(window).on("hashload", function() { $("div.blog-list").css({ display: location.hash.length >= 3 ? "none" : "block" }); });
             </script>
           </div>
 
 
           <!-- BLOG POST =========================================================== -->
 
-          <div class="blog-post">
+          <div class="blog-post" layout="post">
             <h2 class="blog-post-title">Sample blog post</h2>
             <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
 
             <script>
               $(window).on("hashload", function(ev) {
-                  if (!document.info) return;
-                  $("h2.blog-post-title").html(document.info.title || "");
-                  $("p.blog-post-meta").text("Published on "+document.info.date+"");
+                  $("h2.blog-post-title").html(meta.title || "");
+                  $("p.blog-post-meta").text("Published on "+meta.date+"");
               });
             </script>
 
             <main>
             </main>
           </div>
-
-          <script>
-            $(window).on("hashload", function() { $("div.blog-post").css({ display: location.hash.length < 3 ? "none" : "block" }); });
-          </script>
 
         </div>
 
@@ -121,8 +134,18 @@
 
           <div class="sidebar-module sidebar-module-inset">
             <h4>About</h4>
-            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+            <p>
+              Blog example for <em>Blender</em>. Changing the <code>blender.repo</code> variable you can see other GitHub
+              Pages blogs (assuming they use the same standard Jekyll structure with <code>_posts</code> and all that jazz).
+            </p>
           </div>
+
+
+          <!-- TOC ============================================================ -->
+
+          <div class="sidebar-module toc-container">
+          </div>
+          <script>$(".toc-container").load("toc.html")</script>
 
 
           <!-- ARCHIVES ============================================================ -->
@@ -151,9 +174,9 @@
           <div class="sidebar-module">
             <h4>Elsewhere</h4>
             <ol class="list-unstyled">
-              <li><a href="#">GitHub</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Facebook</a></li>
+              <li><a href="//github.com">GitHub</a></li>
+              <li><a href="//twitter.com">Twitter</a></li>
+              <li><a href="//facebook.com">Facebook</a></li>
             </ol>
           </div>
         </div>

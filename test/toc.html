@@ -1,0 +1,12 @@
+<h4>Contents</h4>
+<div class="toc">
+  <ul>
+  </ul>
+</div>
+
+<script>
+  $(window).on("hashload", function(ev) {
+      var $toc = $("div.toc").empty();
+      $("h2[id]:visible").each(function(i, elem) { $toc.append("<li><a href='#"+elem.id+"'>"+elem.textContent+"</a></li>"); });
+  });
+</script>

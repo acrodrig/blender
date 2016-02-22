@@ -1,10 +1,10 @@
-Blender
-=======
+Blender ([§](//acrodrig.github.com/include))
+============================================
 
 A dynamic almost-static Blog Aware page non-generator (based on GitHub Pages).
 
 Drop a suitable blender `index.html` page into a Jekyll structure and get an instant blog with Markdown rendering,
-code highlighting, latex math and full control.
+code highlighting, latex Math and full control.
 
 
 ## Table of Contents
@@ -48,6 +48,15 @@ The snippet below shows a configuration of `branch` via the first method and `re
     blender.repo = "/acrodrig/acrodrig.github.io";
 </script>
 ```
+
+## Front Matter
+
+Blender expand the definitoin of front matter to be a comment an HTML comment  at the beginning of a file.
+
+
+## Hosting
+
+Blender can be hosted anywhere, but since GitHub Pages is pretty popular, I decided to re-use the Jekyll structure
 
 
 ## Known Limitations
