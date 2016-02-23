@@ -1,7 +1,7 @@
 {
   "name": "blender-js",
   "description": "A dynamic almost-static Blog Aware page non-generator",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "author": {
     "name": "Andres C. Rodriguez",
