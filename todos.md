@@ -1,13 +1,13 @@
 HIGH
 ====
 
-- When not on the same base, use HTML's `base` as a way to redirecting the page data
+- Show several examples of blogs (see https://www.smashingmagazine.com/2014/08/build-blog-jekyll-github-pages/)
+- Use Jekyll themes (slate, merlot, time machine, etc)
 
 
 MEDIUM
 ======
 
-- Maintain a Skeleton Fork here on Blender
 - Document how Blender plugins can be created with just JS
 - Use the "Recent Posts" as an example
 - Can I see the number of views on each page via Google Analitycs

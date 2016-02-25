@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <!-- HEAD ================================================================ -->
-
+  <!-- HEAD [BEGIN] ======================================================== -->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,12 +13,14 @@
 
     <title>Blender Demo Blog</title>
 
+    <!-- Bootstrap Styling -->
     <link href="//oss.maxcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="blog.css" rel="stylesheet">
 
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.1/lodash.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="../lib/blender.js"></script>
+    <!--<script type="text/javascript" src="../lib/blender.js"></script>-->
+    <script type="text/javascript" src="../lib/blender.js" repo="/xlson/xlson.github.com"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -32,14 +33,15 @@
       body[layout=main] [layout]:not([layout=main]) { display: none; }
       body[layout=page] [layout]:not([layout=page]) { display: none; }
       body[layout=post] [layout]:not([layout=post]) { display: none; }
+      div.themes img { width: 100px; }
     </style>
   </head>
+  <!-- HEAD [END] ========================================================== -->
 
   <body layout="default">
 
 
-    <!-- NAVIGATION ========================================================== -->
-
+    <!-- NAVIGATION [BEGIN] ================================================== -->
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
@@ -50,41 +52,47 @@
         </nav>
       </div>
     </div>
+    <!-- NAVIGATION [END] ==================================================== -->
+
 
     <div class="container">
 
-      <!-- BLOG HEADER ========================================================= -->
+      <!--
+      <div class="row themes" layout="default">
+        <img src="https://assets-cdn.github.com/themes/cayman/thumbnail.png"/>
+        <img src="https://assets-cdn.github.com/themes/merlot/thumbnail.png"/>
+        <img src="https://assets-cdn.github.com/themes/slate/thumbnail.png"/>
+        <img src="https://assets-cdn.github.com/themes/time_machine/thumbnail.png"/>
+      </div>
+      -->
 
+
+      <!-- BLOG HEADER [BEGIN] ================================================= -->
       <div class="blog-header">
         <h1 class="blog-title">Blender Demo Blog</h1>
         <p class="lead blog-description">
-          The official example template of creating a blog with Blender
+          Example template of creating a blog with Blender
           (mimicking <a href="https://getbootstrap.com/examples/blog/">Bootstrap</a>'s).
         </p>
       </div>
+      <!-- BLOG HEADER [END] =================================================== -->
+
 
       <div class="row">
 
+
         <div class="col-sm-8 blog-main">
 
-          <h4 id="layout">Current Layout: <code>default</code></h4>
-          <script>
-            $(window).on("hashload", function(ev) {
-                $("#layout code").text(meta.layout || "default");
-            });
-          </script>
-
-          <div class="alert alert-warning" style="font-size: 10pt;">
+          <div class="alert alert-warning" style="font-size: 10pt;" layout="default">
             This is an example of how we can quickly build a blog with a single page of HTML re-using the structure
             of Jekyll blogs. Pointing <code>blender.repo</code> to <code>"/acrodrig/acrodrig.github.io"</code>
             the current HTML page loads those pages and blogs posts dynamically. Additionally, it displays the
             plugin <code>toc.html</code> on the right.
           </div>
 
-          <!-- POSTS LIST ========================================================== -->
 
+          <!-- POSTS LIST [BEGIN] ================================================== -->
           <h2 layout="default">Blog Posts</h2>
-
           <div class="blog-list" layout="default">
             <ul>
               {% for (var i = 0; i < items.length; i++) { %}
@@ -93,7 +101,6 @@
                 <span class="sub">(Published on {{ items[i].date }})</span></li>
               {% } %}
             </ul>
-
             <script>
               $.ajax({ method: "GET", url: "https://api.github.com/repos"+blender.repo+"/contents"+blender.path+"/_posts" }).done(function(data) {
                   var items = _.map(data, function(item) {
@@ -106,52 +113,51 @@
               });
             </script>
           </div>
+          <!-- POSTS LIST [END] ==================================================== -->
 
 
-          <!-- BLOG POST =========================================================== -->
-
+          <!-- BLOG POST [BEGIN] =================================================== -->
           <div class="blog-post" layout="post">
             <h2 class="blog-post-title">Sample blog post</h2>
             <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
-
             <script>
               $(window).on("hashload", function(ev) {
                   $("h2.blog-post-title").html(meta.title || "");
                   $("p.blog-post-meta").text("Published on "+meta.date+"");
               });
             </script>
-
-            <main>
-            </main>
+            <article>
+            </article>
           </div>
+          <!-- BLOG POST [END] ===================================================== -->
+
 
         </div>
 
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
 
-          <!-- ABOUT =============================================================== -->
 
+          <!-- ABOUT [START] ======================================================= -->
           <div class="sidebar-module sidebar-module-inset">
             <h4>About</h4>
             <p>
-              Blog example for <em>Blender</em>. Changing the <code>blender.repo</code> variable you can see other GitHub
-              Pages blogs (assuming they use the same standard Jekyll structure with <code>_posts</code> and all that jazz).
+              One page example of how to display a static blog via <a href="https://acrodrig.github.io/blender">Blender</a>.
             </p>
           </div>
+          <!-- ABOUT [END] ========================================================= -->
 
 
-          <!-- TOC ============================================================ -->
-
+          <!-- TOC [BEGIN] ========================================================= -->
           <div class="sidebar-module toc-container">
           </div>
           <script>$(".toc-container").load("toc.html")</script>
+          <!-- TOC [END] =========================================================== -->
 
 
-          <!-- ARCHIVES ============================================================ -->
-
+          <!-- ARCHIVES [BEGIN] ==================================================== -->
           <div class="sidebar-module">
-            <h4>Archives</h4>
+            <h4>Archives (Sample)</h4>
             <ol class="list-unstyled">
               <li><a href="#">March 2014</a></li>
               <li><a href="#">February 2014</a></li>
@@ -167,18 +173,20 @@
               <li><a href="#">April 2013</a></li>
             </ol>
           </div>
+          <!-- ARCHIVES [END] ====================================================== -->
 
 
-          <!-- OTHER =============================================================== -->
-
+          <!-- OTHER [BEGIN] ======================================================= -->
           <div class="sidebar-module">
-            <h4>Elsewhere</h4>
+            <h4>Elsewhere (Sample)</h4>
             <ol class="list-unstyled">
               <li><a href="//github.com">GitHub</a></li>
               <li><a href="//twitter.com">Twitter</a></li>
               <li><a href="//facebook.com">Facebook</a></li>
             </ol>
           </div>
+          <!-- OTHER [END] ========================================================= -->
+
         </div>
 
       </div>
@@ -186,8 +194,7 @@
     </div>
 
 
-    <!-- FOOTER ============================================================== -->
-
+    <!-- FOOTER [BEGIN]======================================================= -->
     <footer class="blog-footer">
       <p>
         Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a> and adapted to work for Blender.<br/>
@@ -195,6 +202,8 @@
       </p>
       </p>
     </footer>
+    <!-- FOOTER [END] ======================================================== -->
+
 
     <script src="//oss.maxcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js" async></script>
